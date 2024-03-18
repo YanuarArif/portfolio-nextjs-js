@@ -9,7 +9,7 @@ const variants = {
   enter: { opacity: 1 },
 };
 
-const Template = ({ childern }) => {
+const Template = ({ children }) => {
   const completion = useScrollProgress();
   return (
     <>
@@ -18,7 +18,7 @@ const Template = ({ childern }) => {
         initial="hidden"
         animate="enter"
         transition={{ type: "ease", delay: 0.2, duration: 0.4 }}>
-        {childern}childern
+        {children}
       </motion.main>
       {/* progress bar */}
       <span
