@@ -23,7 +23,7 @@ const Hero = () => {
             <div className="text-sm uppercase font-semibold mb-4 text-primary tracking-[4px]">
               Web Developer
             </div>
-            <h1 className="h1 mb-4">Halo, nama aku Yanuar Lukman Arif</h1>
+            <h1 className="h1 mb-4">Halo, my name is Yanuar Lukman Arif</h1>
             <p className="subtitle max-w-[490px] mx-auto xl:mx-0">
               Ini adalah profile singkat menganai diriku. Mulai dari perjalanan
               pendidikan hingga perjalanan karir saya.

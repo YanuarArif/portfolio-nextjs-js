@@ -39,27 +39,27 @@ const infoData = [
 
 const qualificationData = [
   {
-    title: "Pendidikan",
+    title: "pendidikan",
     data: [
       {
         sekolah: "SMK Muhammadiyah Bobotsari",
-        Jurusan: "Teknik Komputer Jaringan",
-        Lulusan: "2015 - 2019",
+        jurusan: "Teknik Komputer Jaringan",
+        lulusan: "2015 - 2019",
       },
       {
         sekolah: "SMK Muhammadiyah Bobotsari",
-        Jurusan: "Teknik Komputer Jaringan",
-        Lulusan: "2015 - 2019",
+        jurusan: "Teknik Komputer Jaringan",
+        lulusan: "2015 - 2019",
       },
       {
         sekolah: "SMK Muhammadiyah Bobotsari",
-        Jurusan: "Teknik Komputer Jaringan",
-        Lulusan: "2015 - 2019",
+        jurusan: "Teknik Komputer Jaringan",
+        lulusan: "2015 - 2019",
       },
     ],
   },
   {
-    title: "Pengalaman",
+    title: "pengalaman",
     data: [
       {
         perusahaan: "Barling Reload",
@@ -135,19 +135,143 @@ const About = () => {
           </div>
           {/* tabs */}
           <div className="flex-1">
-            <Tabs>
-              <TabsList>
-                <TabsTrigger value="personal">Info Pribadi</TabsTrigger>
-                <TabsTrigger value="kualifikasi">Kualifikasi</TabsTrigger>
-                <TabsTrigger value="skills">Skills</TabsTrigger>
+            <Tabs defaultValue="personal">
+              <TabsList className="w-full grid xl:grid-cols-3 xl:max-w-[520px] xl:border dark:border-none">
+                <TabsTrigger className="w-[162px] xl:w-auto" value="personal">
+                  Info Pribadi
+                </TabsTrigger>
+                <TabsTrigger
+                  className="w-[162px] xl:w-auto"
+                  value="kualifikasi">
+                  Kualifikasi
+                </TabsTrigger>
+                <TabsTrigger className="w-[162px] xl:w-auto" value="skills">
+                  Skills
+                </TabsTrigger>
               </TabsList>
               {/* tabs content */}
-              <div>
-                <TabsContent value="personal">daftar info personal</TabsContent>
-                <TabsContent value="kualifikasi">
-                  daftar info kualifikasi
+              <div className="text-lg mt-12 xl:mt-8">
+                {/* personal content info */}
+                <TabsContent value="personal">
+                  <div className="text-center xl:text-left">
+                    <h3 className="h3 mb-4">Pengalaman lebih dari 3 Bulan</h3>
+                    <p className="subtitle max-w-xl mx-auto xl:mx-0">
+                      Sebenarnya saya masih dalam proses belajar web programming
+                      dan belum mempunyai pengalaman kerja seputar Programmer
+                      .hehe
+                    </p>
+                    {/* icons */}
+                    <div className="grid xl:grid-cols-2 gap-4 mb-12">
+                      {infoData.map((item, index) => {
+                        return (
+                          <div
+                            className="flex items-center gap-x-4 mx-auto xl:mx-0"
+                            key={index}>
+                            <div className="text-primary">{item.icon}</div>
+                            <div>{item.text}</div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    {/* language */}
+                    <div className="flex flex-col gap-y-2">
+                      <div className="text-primary">Language Skill</div>
+                      <div className="border-b border-border"></div>
+                      <div>Jawa, Indonesia, English, Arab</div>
+                    </div>
+                  </div>
                 </TabsContent>
-                <TabsContent value="skills">daftar info skills</TabsContent>
+                {/* kualifikasi content info */}
+                <TabsContent value="kualifikasi">
+                  <div className="flex flex-col items-center justify-center mx-auto">
+                    <h3 className="h3 mb-8 text-center xl:text-left">
+                      Perjalanan Karir
+                    </h3>
+                    {/* Pengalaman dan Pendidikan wrapper */}
+                    <div className="grid md:grid-cols-2 gap-y-8">
+                      {/* Pengalaman */}
+                      <div className="flex flex-col gap-y-6">
+                        <div className="flex gap-x-4 items-center text-[22px] text-primary">
+                          <Briefcase />
+                          <h4 className="capitalize font-medium">
+                            {getData(qualificationData, "pengalaman").title}
+                          </h4>
+                        </div>
+                        {/* list pengalaman */}
+                        <div className="flex flex-col gap-y-8">
+                          {getData(qualificationData, "pengalaman").data.map(
+                            (item, index) => {
+                              const { perusahaan, jabatan, tahun } = item;
+                              return (
+                                <div className="flex gap-x-8 group" key={index}>
+                                  {/* animasi garis start */}
+                                  <div className="h-[84px] w-[1px] bg-border relative ml-2">
+                                    <div className="w-[11px] h-[11px] bg-primary rounded-full absolute -left-[5px] group-hover:translate-y-[84px] transition-all duration-500"></div>
+                                  </div>
+                                  {/* animasi end */}
+                                  <div>
+                                    <div className="font-semibold text-xl leading-none mb-2">
+                                      {perusahaan}
+                                    </div>
+                                    <div className="text-lg leading-none text-muted-foreground mb-4">
+                                      {jabatan}
+                                    </div>
+                                    <div className="text-base font-medium">
+                                      {tahun}
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            }
+                          )}
+                        </div>
+                      </div>
+                      {/* Pendidikan */}
+                      <div className="flex flex-col gap-y-6">
+                        <div className="flex gap-x-4 items-center text-[22px] text-primary">
+                          <GraduationCap size={28} />
+                          <h4 className="capitalize font-medium">
+                            {getData(qualificationData, "pendidikan").title}
+                          </h4>
+                        </div>
+                        {/* list pendidikan */}
+                        <div className="flex flex-col gap-y-8">
+                          {getData(qualificationData, "pendidikan").data.map(
+                            (item, index) => {
+                              const { sekolah, jurusan, lulusan } = item;
+                              return (
+                                <div className="flex gap-x-8 group" key={index}>
+                                  {/* animasi garis start */}
+                                  <div className="h-[84px] w-[1px] bg-border relative ml-2">
+                                    <div className="w-[11px] h-[11px] bg-primary rounded-full absolute -left-[5px] group-hover:translate-y-[84px] transition-all duration-500"></div>
+                                  </div>
+                                  {/* animasi end */}
+                                  <div>
+                                    <div className="font-semibold text-xl leading-none mb-2">
+                                      {sekolah}
+                                    </div>
+                                    <div className="text-lg leading-none text-muted-foreground mb-4">
+                                      {jurusan}
+                                    </div>
+                                    <div className="text-base font-medium">
+                                      {lulusan}
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            }
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </TabsContent>
+                {/* skills content info */}
+                <TabsContent value="skills">
+                  <div>
+                    <h3></h3>
+                  </div>
+                </TabsContent>
               </div>
             </Tabs>
           </div>
