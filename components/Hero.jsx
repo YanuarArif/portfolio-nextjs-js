@@ -36,7 +36,7 @@ const Hero = () => {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="gap-x-2">
+                <Button variant="secondary" className="gap-x-2">
                   Download CV <Download size={18} />
                 </Button>
               </Link>
